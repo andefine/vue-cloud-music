@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="test"></div>
+    <div class="header"></div>
   </div>
 </template>
 
@@ -10,9 +10,8 @@ export default {
 </script>
 
 <style lang="scss">
-.test {
-  width: 100px;
-  height: 100px;
-  background: red;
+.header {
+  height: 148px;
+  background: $theme;
 }
 </style>
