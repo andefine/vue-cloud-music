@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <div class="header"></div>
+    <div class="header">
+      <div class="menu iconfont icon-list"></div>
+    </div>
   </div>
 </template>
 

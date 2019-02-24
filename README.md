@@ -52,6 +52,8 @@ plugins: {
   },
 }
 ```
+因为我的设计稿就是手机截图(Ｔ▽Ｔ)，所以`viewportWidth`是1080
+
 [更多配置选项](https://github.com/evrone/postcss-px-to-viewport#usage)
 
 ### 自动导入样式文件
@@ -110,3 +112,21 @@ function addStyleResource (rule) {
 yarn add -D style-resources-loader
 ```
 修改之后记得重新`yarn serve`，否则修改后的配置文件是不生效的
+
+### 使用 iconfont-阿里巴巴图标库
+
+#### 下载必要文件
+
+可以看官方[帮助文档](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d0091c141&helptype=code)，也可以搜索几篇文章看一下怎么弄，很简单的。
+
+大致流程：搜索图标->添加至购物车->添加至项目->在项目中将源码下载至本地
+
+#### 如何使用
+
+我使用的方式是`font-class`，先打开`iconfont.css`文件，拉到最下面，可以看到以`icon-`开头的类名，分别对应到在下载下来的图标项目中的图标。
+
+将`iconfont.css`文件放到我们项目中的某个文件(随便你放哪儿)，接着我们需要在`main.js`中引入这个文件。最后使用，直接在页面标签中添加类名
+```html
+<div class="iconfont icon-list"></div>
+```
+到这里还没完，保存时会发现报错，缺少四个文件，我们再把以`iconfont`为文件名，以`eot``svg``ttf``woff`这个四个文件放到`iconfont.css`同样的文件夹下，完成，收工
