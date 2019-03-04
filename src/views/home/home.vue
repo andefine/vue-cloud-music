@@ -9,6 +9,7 @@
 <script>
 import HomeHeader from './home-header'
 import HomeNav from './home-nav'
+import * as api from '@/api'
 
 export default {
   data () {
@@ -21,9 +22,7 @@ export default {
     HomeNav
   },
   created () {
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json())
-      .then(res => console.log(res))
+    api.getBanners()
   }
 }
 </script>
