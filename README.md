@@ -52,7 +52,7 @@ plugins: {
   },
 }
 ```
-因为我的设计稿就是手机截图(Ｔ▽Ｔ)，所以`viewportWidth`是1080
+因为我的设计稿就是手机截图(Ｔ▽Ｔ)，所以`viewportWidth`是1080。但是一般在公司项目中，设计稿的宽度大多是750
 
 [更多配置选项](https://github.com/evrone/postcss-px-to-viewport#usage)
 
