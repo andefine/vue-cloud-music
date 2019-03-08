@@ -14,5 +14,5 @@ export default async function (config) {
 
   const response = await fetch(fullUrl)
 
-  return response
+  return response.json()
 }
