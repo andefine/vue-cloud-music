@@ -39,6 +39,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 30px;
   border-bottom: 1px solid #e6e6e6;
   height: 300px;
   &__item {

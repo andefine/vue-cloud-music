@@ -1,11 +1,11 @@
+import 'normalize.css' // A modern, HTML5-ready alternative to CSS resets 样式初始化
+import './iconfont/iconfont.css'
+import './styles/index.scss'
+
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-
-import 'normalize.css' // A modern, HTML5-ready alternative to CSS resets 样式初始化
-import './iconfont/iconfont.css'
-import './styles/index.scss'
 
 Vue.config.productionTip = false
 
