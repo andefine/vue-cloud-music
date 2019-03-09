@@ -1,9 +1,17 @@
 <template>
   <div class="top-swiper">
     <div class="top-swiper__bg"></div>
-    <swiper class="swiper-com" :options="swiperOption" ref="topSwiper">
+    <swiper
+      class="swiper-com"
+      :options="swiperOption"
+      ref="topSwiper"
+      v-if="data.length > 0"
+    >
       <swiper-slide class="swiper-slide" v-for="(item, index) in data" :key="index">
         <img class="swiper-slide__img" :src="item.imageUrl" alt="">
+        <span
+          :class="`swiper-slide__tag--${item.titleColor}`"
+        >{{item.typeTitle}}</span>
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -66,10 +74,34 @@ export default {
 .swiper-slide {
   display: flex;
   justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 18px;
   &__img {
-    width: 1044px;
-    height: 100%;
     border-radius: 16px;
+    width: 100%;
+    height: 100%;
+  }
+  &__tag {
+    position: absolute;
+    bottom: 0;
+    right: 18px;
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding: 0 20px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    font-size: 36px;
+    color: #fff;
+    &--red {
+      @extend .swiper-slide__tag;
+      background: $tagRed;
+    }
+    &--blue {
+      @extend .swiper-slide__tag;
+      background: $tagBlue;
+    }
   }
 }
 .swiper-pagination-bullet-custom {

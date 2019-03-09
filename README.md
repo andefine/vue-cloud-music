@@ -132,3 +132,6 @@ yarn add -D style-resources-loader
 到这里还没完，保存时会发现报错，缺少四个文件，我们再把以`iconfont`为文件名，以`eot``svg``ttf``woff`这个四个文件放到`iconfont.css`同样的文件夹下，完成，收工
 
 ### 在`scss`中使用`BEM`[直达链接](https://github.com/andefine/knowledge-points/blob/master/css/use-BEM-in-scss.md)
+
+### vue-awesome-swiper使用v-for渲染数据时，设置loop:true无效
+解决方法：在父元素中添加v-if="xxx.length > 0"。答案在此[{ loop: true } swiper-slide goes wrong when data is from v-for](https://github.com/surmon-china/vue-awesome-swiper/issues/322)
