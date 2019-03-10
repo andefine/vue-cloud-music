@@ -1,6 +1,11 @@
 <template>
   <div class="recommend-playlist">
-    <card/>
+    <card
+      v-for="(item, index) in playlists"
+      :key="index"
+      divide="three"
+      :data="item"
+    />
   </div>
 </template>
 
@@ -13,17 +18,24 @@ export default {
   components: {
     Card
   },
-  created () {
-    api.getPlaylist({
+  data () {
+    return {
+      playlists: []
+    }
+  },
+  async created () {
+    const { playlists } = await api.getPlaylist({
       limit: 6,
       order: 'hot'
     })
+    this.playlists = playlists
   }
 }
 </script>
 
 <style>
 .recommend-playlist {
-
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
