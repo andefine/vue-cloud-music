@@ -5,6 +5,7 @@
     <top-swiper :data="banners" />
     <plates/>
     <cards-header title="推荐歌单"/>
+    <recommend-playlist/>
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import HomeNav from './home-nav'
 import TopSwiper from '@/components/top-swiper/top-swiper'
 import Plates from './plates'
 import CardsHeader from '@/components/cards-header/cards-header'
+import RecommendPlaylist from './recommend-playlist'
 
 import * as api from '@/api'
 
@@ -28,7 +30,8 @@ export default {
     HomeNav,
     TopSwiper,
     Plates,
-    CardsHeader
+    CardsHeader,
+    RecommendPlaylist
   },
   async created () {
     const { banners } = await api.getBanners()
