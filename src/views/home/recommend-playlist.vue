@@ -35,7 +35,9 @@ export default {
 
 <style>
 .recommend-playlist {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 342px 342px 342px;
+  justify-content: space-between;
+  padding: 0 18px;
 }
 </style>
