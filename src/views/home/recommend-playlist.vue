@@ -25,7 +25,6 @@ export default {
   },
   async created () {
     const { playlists } = await api.getPlaylist({
-      limit: 6,
       order: 'hot'
     })
     this.playlists = playlists

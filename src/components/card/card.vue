@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img class="card__img" :src="data.coverImgUrl" alt="">
+    <img class="card__img" v-lazy="data.coverImgUrl" alt="">
     <span class="card__name">{{data.name}}</span>
     <div class="card__mask"></div>
     <div class="card__playcount">
