@@ -1,41 +1,21 @@
 <template>
   <div class="home">
-    <home-header/>
     <home-nav/>
-    <top-swiper :data="banners" />
-    <plates/>
-    <cards-header title="推荐歌单"/>
-    <recommend-playlist/>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import HomeHeader from './home-header'
 import HomeNav from './home-nav'
-import TopSwiper from '@/components/top-swiper/top-swiper'
-import Plates from './plates'
-import CardsHeader from '@/components/cards-header/cards-header'
-import RecommendPlaylist from './recommend-playlist'
-
-import * as api from '@/api'
 
 export default {
   data () {
-    return {
-      banners: []
-    }
+    return {}
   },
   components: {
-    HomeHeader,
-    HomeNav,
-    TopSwiper,
-    Plates,
-    CardsHeader,
-    RecommendPlaylist
+    HomeNav
   },
-  async created () {
-    const { banners } = await api.getBanners()
-    this.banners = banners
+  created () {
   },
   methods: {
 

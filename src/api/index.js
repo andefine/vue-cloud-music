@@ -10,3 +10,9 @@ export const getPlaylist = (params = {}) => {
     params
   })
 }
+
+export const getRecommendPlaylists = () => {
+  return http({
+    url: '/personalized'
+  })
+}
