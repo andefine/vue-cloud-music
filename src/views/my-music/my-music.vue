@@ -26,11 +26,18 @@
       </div>
     </div>
 
+    <PlaylistHeader/>
+
   </div>
 </template>
 
 <script>
+import PlaylistHeader from './playlist-header'
+
 export default {
+  components: {
+    PlaylistHeader
+  },
   data () {
     return {
       items: [
@@ -140,7 +147,7 @@ export default {
   }
   &__label {
     font-size: 36px;
-    color: $subFont;
+    color: $grayFont;
   }
 }
 </style>
