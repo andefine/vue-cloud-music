@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/views/index/index'
+import Login from '@/views/login/login'
 import MyMusic from '@/views/my-music/my-music'
 import Home from '@/views/home/home'
 import Video from '@/views/video/video'
@@ -52,6 +53,11 @@ export default new Router({
           component: Video
         }
       ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     },
     {
       path: '/about',
