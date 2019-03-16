@@ -1,10 +1,10 @@
 <template>
   <div class="playlist-header">
     <div class="playlist-header__left">
-      <div class="playlist-header__arrow--down iconfont icon-right"></div>
+      <i class="playlist-header__arrow--down iconfont icon-right"></i>
       <div class="playlist-header__title">创建的歌单(1)</div>
     </div>
-    <div class="playlist-header__setting iconfont icon-setting"></div>
+    <i class="playlist-header__setting iconfont icon-setting"></i>
   </div>
 </template>
 

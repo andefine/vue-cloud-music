@@ -3,17 +3,17 @@
     <BaseHeader/>
     <div class="login-part">
       <div class="login-part__account">
-        <div class="login-part__account-icon iconfont icon-cellphone"></div>
+        <i class="login-part__account-icon iconfont icon-cellphone"></i>
         <input
           type="text"
           class="login-part__account-input"
           v-model="account"
           placeholder="请输入手机号"
         >
-        <div class="login-part__account-cross iconfont icon-cross"></div>
+        <i class="login-part__account-cross iconfont icon-cross"></i>
       </div>
       <div class="login-part__password">
-        <div class="login-part__password-icon iconfont icon-lock"></div>
+        <i class="login-part__password-icon iconfont icon-lock"></i>
         <input
           type="password"
           class="login-part__password-input"

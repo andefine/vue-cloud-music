@@ -1,6 +1,6 @@
 <template>
   <div class="recommend-playlist">
-    <card
+    <Card
       v-for="(item, index) in playlists"
       :key="index"
       divide="three"

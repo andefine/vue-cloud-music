@@ -1,9 +1,9 @@
 <template>
   <div class="recommend">
-    <top-swiper :data="banners" />
-    <plates/>
-    <cards-header title="推荐歌单"/>
-    <recommend-playlist/>
+    <TopSwiper :data="banners" />
+    <Plates/>
+    <CardsHeader title="推荐歌单"/>
+    <RecommendPlaylist/>
   </div>
 </template>
 

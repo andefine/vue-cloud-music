@@ -1,10 +1,10 @@
 <template>
   <header class="index-header">
-    <span class="iconfont icon-list"></span>
+    <i class="iconfont icon-list"></i>
     <div class="index-header-tab">
-      <span class="index-header-tab__item iconfont icon-music"></span>
-      <span class="index-header-tab__item iconfont icon-netease"></span>
-      <span class="index-header-tab__item iconfont icon-video"></span>
+      <i class="index-header-tab__item iconfont icon-music"></i>
+      <i class="index-header-tab__item iconfont icon-netease"></i>
+      <i class="index-header-tab__item iconfont icon-video"></i>
     </div>
     <span class="iconfont icon-search"></span>
   </header>

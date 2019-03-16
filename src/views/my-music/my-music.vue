@@ -4,7 +4,7 @@
     <div class="mine-user">
       <div class="mine-user-bar">
         <div class="mine-user-bar__user">
-          <div class="mine-user-bar__avatar--default iconfont icon-default-avatar"></div>
+          <i class="mine-user-bar__avatar--default iconfont icon-default-avatar"></i>
           <span class="mine-user-bar__username">未登录</span>
         </div>
         <div class="mine-user-bar__btn">开通会员</div>
@@ -16,10 +16,10 @@
       :key="index"
       class="mine-item"
     >
-      <div
+      <i
         class="mine-item__icon iconfont"
         :class="`icon-${item.iconClass}`"
-      ></div>
+      ></i>
       <div class="mine-item__name">
         {{item.name}}
         <span class="mine-item__label">({{item.label}})</span>

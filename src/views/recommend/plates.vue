@@ -1,7 +1,7 @@
 <template>
   <div class="plates">
     <div class="plates__item" v-for="(item, index) in plates" :key="index">
-      <div class="plates__item-icon iconfont" :class="item.icon"></div>
+      <i class="plates__item-icon iconfont" :class="item.icon"></i>
       <span class="plates__item-title">{{item.title}}</span>
     </div>
   </div>

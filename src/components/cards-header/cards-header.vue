@@ -1,7 +1,7 @@
 <template>
   <div class="cards-header">
     <h3 class="cards-header__title">{{title}}</h3>
-    <span class="cards-header__arrow iconfont icon-right"></span>
+    <i class="cards-header__arrow iconfont icon-right"></i>
   </div>
 </template>
 

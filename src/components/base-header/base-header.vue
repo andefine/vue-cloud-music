@@ -1,6 +1,6 @@
 <template>
   <div class="base-header">
-    <div class="base-header__back iconfont icon-back"></div>
+    <i class="base-header__back iconfont icon-back"></i>
     <span class="base-header__title">手机号登录</span>
   </div>
 </template>

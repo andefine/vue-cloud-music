@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/views/index/index'
-import Login from '@/views/login/login'
 import MyMusic from '@/views/my-music/my-music'
 import Home from '@/views/home/home'
 import Video from '@/views/video/video'
@@ -57,15 +56,15 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: () => import(/* webpackChunkName: "login" */ '@/views/login/login')
     },
     {
-      path: '/about',
-      name: 'about',
+      path: '/test',
+      name: 'test',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      component: () => import(/* webpackChunkName: "test" */ '@/views/test/test')
     }
   ]
 })

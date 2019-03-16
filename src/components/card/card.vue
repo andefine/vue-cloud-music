@@ -4,7 +4,7 @@
     <span class="card__name">{{data.name}}</span>
     <div class="card__mask"></div>
     <div class="card__playcount">
-      <span class="card__playcount-earphone iconfont icon-earphone"></span>
+      <i class="card__playcount-earphone iconfont icon-earphone"></i>
       <span>{{data.playCount | formatCount}}</span>
     </div>
   </div>
