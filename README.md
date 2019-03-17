@@ -135,3 +135,5 @@ yarn add -D style-resources-loader
 
 ### vue-awesome-swiper使用v-for渲染数据时，设置loop:true无效
 解决方法：在父元素中添加v-if="xxx.length > 0"。答案在此[{ loop: true } swiper-slide goes wrong when data is from v-for](https://github.com/surmon-china/vue-awesome-swiper/issues/322)
+
+### 自己写一个`toast`弹窗组件(确切的说应该属于插件)
