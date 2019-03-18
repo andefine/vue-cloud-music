@@ -1,16 +1,13 @@
 <template>
-  <transition name="fade">
-    <div class="toast" v-show="show">{{message}}</div>
-  </transition>
+  <div class="toast">{{message}}</div>
+  <!-- <transition name="fade">
+  </transition> -->
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      message: '',
-      show: false
-    }
+  props: {
+    message: String
   }
 }
 </script>
@@ -19,17 +16,19 @@ export default {
 .toast {
   position: fixed;
   left: 50%;
-  top:50%;
-  background: rgba(0, 0, 0, .35);
-  padding: 30px;
+  top: 50%;
   border-radius: 20px;
+  padding: 20px 50px;
+  max-width: 80%;
+  line-height: 1.4;
+  color: #fff;
+  background: rgba(0, 0, 0, .7);
   transform: translate(-50%, -50%);
-  color:#fff;
 }
-.fade-leave-active {
+/* .fade-leave-active {
   transition: opacity 0.3s;
 }
 .fade-leave-to {
   opacity: 0;
-}
+} */
 </style>
