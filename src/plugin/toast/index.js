@@ -13,25 +13,25 @@ import toastOptions from './toast.vue'
 const Toast = Vue.extend(toastOptions)
 
 function showToast (options = {}) {
+  // 下面这行的写法可以让我们在使用 `this.$toast()` 的时候，
+  // 可以直接传入一个字符串，也可以传入一个配置对象
   const message = typeof options === 'string' ? options : options.message
-  const duration = options.duration || 2000
+  const duration = options.duration || 3000
 
-  const toast = new Toast({
+  const instance = new Toast({
     el: document.createElement('div')
   })
 
-  toast.message = message
-  toast.show = true
+  instance.message = message
+  instance.show = true
 
-  document.body.appendChild(toast.$el)
+  document.body.appendChild(instance.$el)
 
   setTimeout(() => {
-    toast.show = false
+    instance.show = false
   }, duration)
 }
 
-function registryToast () {
+export default function () {
   Vue.prototype.$toast = showToast
 }
-
-export default registryToast

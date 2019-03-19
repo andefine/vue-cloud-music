@@ -8,9 +8,9 @@ import router from './router'
 import store from './store'
 import VueLazyload from 'vue-lazyload'
 import * as filters from './filters'
-import toastRegistry from './plugin/toast'
+import toastPlugin from './plugin/toast'
 
-Vue.use(toastRegistry)
+Vue.use(toastPlugin)
 
 Vue.use(VueLazyload)
 
