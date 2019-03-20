@@ -17,6 +17,8 @@ function showToast (options = {}) {
   // 可以直接传入一个字符串，也可以传入一个配置对象
   const message = typeof options === 'string' ? options : options.message
   const duration = options.duration || 3000
+  const position = options.position || 'middle'
+  const iconClass = options.iconClass || ''
 
   const instance = new Toast({
     el: document.createElement('div')
@@ -24,6 +26,8 @@ function showToast (options = {}) {
 
   instance.message = message
   instance.show = true
+  instance.position = position
+  instance.iconClass = iconClass
 
   document.body.appendChild(instance.$el)
 

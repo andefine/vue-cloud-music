@@ -42,8 +42,15 @@ export default {
   },
   methods: {
     handelLogin () {
-      // const account = this.account
-      // const password = this.password
+      const account = this.account
+      const password = this.password
+
+      if (!account) {
+        return this.$toast('请输入手机号')
+      }
+      if (!password) {
+        return this.$toast('请输入密码')
+      }
     }
   }
 }
@@ -81,6 +88,9 @@ export default {
     font-size: 46px;
     color: #333;
     outline: 0;
+    &::placeholder {
+      color: #ccc;
+    }
   }
   &__account-cross {
     font-size: 36px;
