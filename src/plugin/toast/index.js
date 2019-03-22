@@ -1,39 +1,86 @@
 import Vue from 'vue'
+import toastComponent from './toast.vue'
 
-// 引入toast组件，作为 component options (组件选项)
-import toastOptions from './toast.vue'
+const Toast = Vue.extend(toastComponent)
 
-// 文档是这样说的：
-// 使用基础 Vue 构造器，创建一个“子类”。参数是一个包含 组件选项 的对象。
-// Vue.extend 文档位置 https://vuejs.org/v2/api/#Vue-extend
-// 在这里 Vue.extend 会返回一个实例构造器，
-// 这样我们才能在后面使用 new Toast() 去生成一个 toast 实例，
-// 并将它插入到页面结构中。
-// 这里可能需要面向对象的知识会比较好理解很多(其实我对面向对象的理解也是一团浆糊￣ω￣=)
-const Toast = Vue.extend(toastOptions)
+// 这个数组是来存放 Toast 实例。
+// 但是注意，并不是所有已经新建的实例，
+// 而是已经新建的并且已经隐藏起来的实例。
+// 来看一下整体流程，大概就明白为什么这样做了。
+// 首先是没有实例，当我们第一次调用 this.$toast 时，
+// 就新建一个实例，当这个 toast 隐藏之后，
+// 将这个实例 push 到这个数组中。
+// 那么在我们下一次调用 this.$toast 时，如果这个数组为空，
+// 说明之前的实例还没有隐藏，那我们只能重新新建一个实例；
+// 另一种情况，只要数组中有一个值，说明已经有之前新建的实例，
+// 而且已经隐藏，那我们便可以拿它重新使用，并不需要新建实例。
+// 这样便达到可以同时显示多个 toast 而且不会新建多余实例
+const instances = []
 
-function showToast (options = {}) {
-  // 下面这行的写法可以让我们在使用 `this.$toast()` 的时候，
-  // 可以直接传入一个字符串，也可以传入一个配置对象
-  const message = typeof options === 'string' ? options : options.message
-  const duration = options.duration || 3000
-  const position = options.position || 'middle'
-  const iconClass = options.iconClass || ''
-
-  const instance = new Toast({
+/**
+ * 这个函数主要是获取一个可用实例
+ *
+ * @returns
+ */
+function getAnAvailibleInstance () {
+  if (instances.length > 0) {
+    // const instance = instances[0]
+    // instances.shift()
+    // return instance
+    // 其实上面三行可以写成：
+    return instances.shift()
+    // 然这般甚骚
+  }
+  return new Toast({
     el: document.createElement('div')
   })
+}
 
-  instance.message = message
-  instance.show = true
-  instance.position = position
-  instance.iconClass = iconClass
+function removeDom (e) {
+  if (e.target.parentNode) {
+    event.target.parentNode.removeChild(event.target)
+  }
+}
+
+function showToast (options = {}) {
+  console.log(instances)
+  const instance = getAnAvailibleInstance()
+  clearTimeout(instance.timer)
+
+  instance.message = typeof options === 'string' ? options : options.message
+  const duration = options.duration || 3000
+  // 添加 toast 在页面中显示的位置和图标class 选项，
+  // 当然页面结构和css都要作相应修改。
+  // 我这里使用的阿里的iconfont，项目中需要导入相关文件。
+  instance.position = options.position || 'middle'
+  instance.iconClass = options.iconClass || ''
 
   document.body.appendChild(instance.$el)
 
-  setTimeout(() => {
-    instance.show = false
-  }, duration)
+  // 这里使用使用了 Vue.nextTick 全局api。
+  // 因为我们改变数据，然后 Vue 更新 DOM 是异步的，
+  // 使用 Vue.nextTick 的作用就是保证 DOM 更新
+  // 完毕之后再执行 .then 中的回调(Vue.nextTick 支持 promise 风格哟)
+  // 我试过不使用 Vue.nextTick 也可行，但这样更严谨一点嘛[狗头]
+  Vue.nextTick()
+    .then(() => {
+      instance.show = true
+
+      // 在显示时间结束之后，移除节点。
+      // 并且将该实例重新 push 到 instances 数组中，
+      // 这样 instances 数组中保存的就是已经隐藏的实例。
+      // (其实这里我觉得也是有点问题的，是不是应该在
+      // 这个 transition 结束之后再 push 呢？？？
+      // 可是好像并没有什么好的办法做到这样，toast-ui 中也是这样做的。
+      // 另外 toast-ui 在显示之后先是移除了 transitionend 监听器，
+      // 不是很明白为什么要先来移除这一步。希望有大佬解惑一哈)
+      instance.timer = setTimeout(() => {
+        // 添加监听器，在 transition 结束之后移除节点
+        instance.$el.addEventListener('transitionend', removeDom)
+        instance.show = false
+        instances.push(instance)
+      }, duration)
+    })
 }
 
 export default function () {

@@ -1,6 +1,8 @@
 <template>
   <div class="test">
-    <button @click="handleClick">点我</button>
+    <button @click="handleClick(0, $event)">默认</button>
+    <button @click="handleClick(1, $event)">在底部</button>
+    <button @click="handleClick(2, $event)">有图标</button>
     <Toast
       message="I am a toast"/>
   </div>
@@ -14,11 +16,24 @@ export default {
     Toast
   },
   methods: {
-    handleClick () {
-      this.$toast({
-        message: 'I am a toast',
-        iconClass: 'iconfont icon-cross'
-      })
+    handleClick (index, e) {
+      if (index === 0) {
+        this.$toast({
+          message: 'I am a toast'
+        })
+      }
+      if (index === 1) {
+        this.$toast({
+          message: 'I am a toast',
+          position: 'bottom'
+        })
+      }
+      if (index === 2) {
+        this.$toast({
+          message: 'I am a toast',
+          iconClass: 'iconfont icon-cross'
+        })
+      }
     }
   }
 }

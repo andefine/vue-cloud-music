@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div :class="`toast--${position}`" v-show="true">
+    <div :class="`toast--${position}`" v-show="show">
       <i class="toast__icon" :class="iconClass" v-if="iconClass"></i>
       <span class="toast__text">{{message}}</span>
     </div>
